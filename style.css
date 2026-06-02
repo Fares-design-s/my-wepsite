@@ -247,7 +247,7 @@ body::after {
 }
 
 #quran-verse p {
-    font-size: 30px;
+    font-size: 27px;
     color: transparent;
     background: linear-gradient(135deg, #a78bfa, #7c3aed, #c4b5fd);
     -webkit-background-clip: text;
