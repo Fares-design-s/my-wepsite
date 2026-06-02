@@ -238,3 +238,22 @@ body::after {
     0%, 100% { transform: translateY(0px) scale(1); }
     50% { transform: translateY(-30px) scale(1.05); }
 }
+
+/* ===== QURAN VERSE ===== */
+#quran-verse {
+    text-align: center;
+    margin-bottom: 48px;
+    direction: rtl;
+}
+
+#quran-verse p {
+    font-size: 30px;
+    color: transparent;
+    background: linear-gradient(135deg, #a78bfa, #7c3aed, #c4b5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    line-height: 2.2;
+    letter-spacing: 1px;
+    text-shadow: none;
+    font-weight: 400;
+}
