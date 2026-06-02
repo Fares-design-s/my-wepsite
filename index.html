@@ -10,73 +10,176 @@
 </head>
 
 <body>
-    
+
     <div class="orb orb1"></div>
     <div class="orb orb2"></div>
     <div class="orb orb3"></div>
+    <canvas id="stars"></canvas>
 
     <nav id="navbar">
-    <span class="logo">FARES</span>
-    <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+        <span class="logo">FARES</span>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero">
         <div id="quran-verse">
-        <p>﴿ وَأَنْ لَيْسَ لِلْإِنْسَانِ إِلَّا مَا سَعَى ﴾</p>
-        <p>﴿ وَأَنَّ سَعْيَهُ سَوْفَ يُرَى ﴾</p>
-        <p>﴿ ثُمَّ يُجْزَاهُ الْجَزَاءَ الْأَوْفَى ﴾</p>
+            <p>﴿ وَأَنْ لَيْسَ لِلْإِنْسَانِ إِلَّا مَا سَعَى ﴾</p>
+            <p>﴿ وَأَنَّ سَعْيَهُ سَوْفَ يُرَى ﴾</p>
+            <p>﴿ ثُمَّ يُجْزَاهُ الْجَزَاءَ الْأَوْفَى ﴾</p>
         </div>
         <img src="profile.png" alt="Fares">
-        <h1>FARES</h1>
-        <p>Video Editor</p>
+        <p id="hero-name">I'm Fares</p>
+        <h1 id="hero-title">Video Editor</h1>
+        <p id="hero-tagline">Turning raw footage into stories that move people.</p>
+        <div id="hero-stats">
+            <div class="stat">
+                <span class="stat-number">2+</span>
+                <span class="stat-label">Years of Experience</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">20+</span>
+                <span class="stat-label">Happy Clients</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Projects Completed</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <p id="features-sub">Why work with me?</p>
+        <h2 id="features-title">What Makes Me Different</h2>
+        <div id="features-grid">
+            <div class="feature-card">
+                <div class="feature-left">
+                    <span class="feature-icon">⚡</span>
+                    <span class="feature-name">Fast Delivery</span>
+                </div>
+                <p class="feature-desc">I commit to deadlines and can deliver even faster — no excuses. If anything comes up, I'll tell you before starting the project.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-left">
+                    <span class="feature-icon">🎬</span>
+                    <span class="feature-name">Edit Quality</span>
+                </div>
+                <p class="feature-desc">I deliver the best editing and highest video quality to make sure your content stands out and grabs attention.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-left">
+                    <span class="feature-icon">💰</span>
+                    <span class="feature-name">Fair Pricing</span>
+                </div>
+                <p class="feature-desc">Price depends on the type of video — but I guarantee it'll be the best deal you'll hear for the quality you're getting.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-left">
+                    <span class="feature-icon">🤝</span>
+                    <span class="feature-name">Professionalism</span>
+                </div>
+                <p class="feature-desc">I earn your trust by treating every client with full respect and appreciation — professionalism goes both ways.</p>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
-    <h2>About Me</h2>
-    <p>Video editor with over a year of experience in creating and editing visual content. I transform raw footage into compelling, professional videos tailored for every platform.</p>
-    <p>My work covers sound design, cutting, color grading, visual effects, storytelling, and animation — always pushing to deliver the best result.</p>
-    <div id="skills">
-        <span>After Effects</span>
-        <span>Premiere Pro</span>
-        <span>Sound Design</span>
-        <span>Color Grading</span>
-        <span>VFX</span>
-        <span>Storytelling</span>
-        <span>Animation</span>
-    </div>
+        <h2>About Me</h2>
+        <p class="about-desc">Video editor with over a year of experience in creating and editing visual content. I transform raw footage into compelling, professional videos tailored for every platform.</p>
+        <p class="about-desc">My work covers sound design, cutting, color grading, visual effects, storytelling, and animation — always pushing to deliver the best result.</p>
+    
+        <h3 id="skills-title">My Skills</h3>
+    
+        <div id="skills-grid">
+        
+            <div class="skill-card">
+                <div class="skill-box">
+                    <span class="skill-emoji">✂️</span>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar" style="--pct: 90%"></div>
+                    </div>
+                    <span class="skill-pct">90%</span>
+                </div>
+                <p class="skill-name">Cutting & Editing</p>
+            </div>
+        
+            <div class="skill-card">
+                <div class="skill-box">
+                    <span class="skill-emoji">✨</span>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar" style="--pct: 85%"></div>
+                    </div>
+                    <span class="skill-pct">85%</span>
+                </div>
+                <p class="skill-name">Visual Effects</p>
+            </div>
+        
+            <div class="skill-card">
+                <div class="skill-box">
+                    <span class="skill-emoji">🎵</span>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar" style="--pct: 70%"></div>
+                    </div>
+                    <span class="skill-pct">70%</span>
+                </div>
+                <p class="skill-name">Sound Design</p>
+            </div>
+        
+            <div class="skill-card">
+                <div class="skill-box">
+                    <span class="skill-emoji">🎭</span>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar" style="--pct: 60%"></div>
+                    </div>
+                    <span class="skill-pct">60%</span>
+                </div>
+                <p class="skill-name">Storytelling</p>
+            </div>
+        
+            <div class="skill-card">
+                <div class="skill-box">
+                    <span class="skill-emoji">🎨</span>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar" style="--pct: 50%"></div>
+                    </div>
+                    <span class="skill-pct">50%</span>
+                </div>
+                <p class="skill-name">Color Grading</p>
+            </div>
+        
+        </div>
     </section>
 
     <!-- Work Section -->
     <section id="work">
         <h2>My Work</h2>
-        <p>Reels Craetor</p>
+        <p>Reels Creator</p>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-    <h2>Let's Work Together</h2>
-    <p>Have a project in mind? I'd love to hear about it.</p>
-    <div id="contact-links">
-        <a href="fareseprahim2028@gmail.com" target="_blank">Email</a>
-        <a href="https://wa.me/201225884711" target="_blank">WhatsApp</a>
-        <a href="https://www.instagram.com/far_es7576" target="_blank">Instagram</a>
-        <a href="https://www.linkedin.com/in/fares-iprahim-4b6560411" target="_blank">LinkedIn</a>
-    </div>
+        <h2>Let's Work Together</h2>
+        <p>Have a project in mind? I'd love to hear about it.</p>
+        <div id="contact-links">
+            <a href="mailto:fareseprahim2028@gmail.com" target="_blank">Email</a>
+            <a href="https://wa.me/201225884711" target="_blank">WhatsApp</a>
+            <a href="https://www.instagram.com/far_es7576" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/in/fares-iprahim-4b6560411" target="_blank">LinkedIn</a>
+        </div>
     </section>
 
     <footer>
-    <p>© 2026 Fares. All rights reserved.</p>
+        <p>© 2026 Fares. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
-    <!-- Footer -->
 
 </body>
 
