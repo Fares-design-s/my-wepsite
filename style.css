@@ -25,11 +25,52 @@ body {
 }
 
 #hero img {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #ffffff;
+    border: 2px solid rgba(167, 139, 250, 0.6);
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+}
+
+#profile-wrap {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+#profile-wrap::before {
+    content: '';
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(80, 0, 180, 0.5) 0%, transparent 70%);
+    z-index: 1;
+}
+
+#profile-wrap::after {
+    content: '';
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    animation: rotate-ring 6s linear infinite;
+    z-index: 0;
+    background: transparent;
+}
+
+@keyframes rotate-ring {
+    0% { transform: rotate(0deg) scale(1); opacity: 0.6; }
+    50% { transform: rotate(180deg) scale(1.05); opacity: 1; }
+    100% { transform: rotate(360deg) scale(1); opacity: 0.6; }
 }
 
 #hero h1 {
@@ -579,4 +620,193 @@ body::after {
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
+}
+
+/* ===== FLOATING TEXT ===== */
+@keyframes floatText {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+#hero-name {
+    animation: floatText 3s ease-in-out infinite;
+}
+
+#hero-title {
+    animation: floatText 4s ease-in-out infinite;
+}
+
+/* ===== TYPING CURSOR ===== */
+#hero-tagline::after {
+    content: '|';
+    color: #a78bfa;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ===== FLOATING CHARACTER ===== */
+#floating-char {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: charFloat 4s ease-in-out infinite;
+    cursor: pointer;
+}
+
+#floating-char svg {
+    filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.6));
+}
+
+@keyframes charFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+#char-bubble {
+    background: rgba(124, 58, 237, 0.15);
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    border-radius: 12px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: #a78bfa;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    animation: bubblePulse 3s ease-in-out infinite;
+    white-space: nowrap;
+}
+
+@keyframes bubblePulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+    /* Navbar */
+    #navbar {
+        padding: 16px 20px;
+    }
+
+    #navbar ul {
+        gap: 16px;
+    }
+
+    #navbar ul a {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+
+    /* Hero */
+    #hero {
+        padding: 120px 20px 60px;
+    }
+
+    #quran-verse p {
+        font-size: 16px;
+    }
+
+    #hero-title {
+        font-size: 42px;
+    }
+
+    #hero-name {
+        font-size: 16px;
+    }
+
+    #hero-tagline {
+        font-size: 12px;
+    }
+
+    #hero-stats {
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stat-number {
+        font-size: 28px;
+    }
+
+    /* Profile */
+    #profile-wrap {
+        width: 160px;
+        height: 160px;
+    }
+
+    #hero img {
+        width: 140px;
+        height: 140px;
+    }
+
+    /* Features */
+    #features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #features-title {
+        font-size: 26px;
+    }
+
+    /* About */
+    #about h2, #work h2, #contact h2 {
+        font-size: 24px;
+    }
+
+    #skills-title {
+        font-size: 24px;
+    }
+
+    #skills-grid {
+        gap: 16px;
+    }
+
+    .skill-box {
+        width: 100px;
+        height: 100px;
+    }
+
+    .skill-emoji {
+        font-size: 24px;
+    }
+
+    /* Contact */
+    #contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #contact-links a {
+        width: 200px;
+        text-align: center;
+    }
+
+    /* Sections */
+    section {
+        padding: 60px 20px;
+    }
+
+    /* Character */
+    #floating-char {
+        bottom: 12px;
+        right: 12px;
+    }
+
+    #floating-char svg {
+        width: 80px;
+        height: 95px;
+    }
+
+    #char-bubble {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
 }
