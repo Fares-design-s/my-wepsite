@@ -74,3 +74,18 @@ const skillObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 document.querySelectorAll('.skill-bar').forEach(bar => skillObserver.observe(bar));
+
+// Video Modal
+function openVideo(id) {
+    const modal = document.getElementById('video-modal');
+    const iframe = document.getElementById('modal-iframe');
+    iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+    modal.classList.add('active');
+}
+
+function closeVideo() {
+    const modal = document.getElementById('video-modal');
+    const iframe = document.getElementById('modal-iframe');
+    modal.classList.remove('active');
+    iframe.src = '';
+}
