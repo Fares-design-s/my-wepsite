@@ -289,8 +289,10 @@ footer { text-align: center; padding: 40px; color: #333; font-size: 13px; letter
     #floating-char { bottom: 12px; right: 12px; }
     #floating-char svg { width: 80px; height: 95px; }
     #char-bubble { font-size: 10px; padding: 4px 10px; }
+    
+}
 
-    /* VIDEO MODAL */
+/* VIDEO MODAL */
 #video-modal {
     display: none;
     position: fixed;
@@ -324,5 +326,4 @@ footer { text-align: center; padding: 40px; color: #333; font-size: 13px; letter
     font-size: 24px;
     cursor: pointer;
     z-index: 10;
-}
 }
