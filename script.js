@@ -1,397 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fares | Video Editor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+// Fade in
+document.body.style.opacity = '0';
+window.addEventListener('load', () => {
+    document.body.style.transition = 'opacity 1.5s ease';
+    document.body.style.opacity = '1';
+});
 
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-    <canvas id="stars"></canvas>
+// Stars
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    <nav id="navbar">
-        <span class="logo">FARES</span>
-        <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+const stars = [];
+for (let i = 0; i < 200; i++) {
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5 + 0.3,
+        opacity: Math.random() * 0.8 + 0.2,
+        speed: Math.random() * 0.4 + 0.1
+    });
+}
+function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.opacity})`;
+        ctx.fill();
+        star.y -= star.speed;
+        if (star.y < 0) { star.y = canvas.height; star.x = Math.random() * canvas.width; }
+    });
+    requestAnimationFrame(drawStars);
+}
+drawStars();
+window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-    <section id="hero">
-        <div id="quran-verse">
-            <p>﴿ وَأَنْ لَيْسَ لِلْإِنْسَانِ إِلَّا مَا سَعَى ﴾</p>
-            <p>﴿ وَأَنَّ سَعْيَهُ سَوْفَ يُرَى ﴾</p>
-            <p>﴿ ثُمَّ يُجْزَاهُ الْجَزَاءَ الْأَوْفَى ﴾</p>
-        </div>
-        <div id="profile-wrap">
-            <img src="profile.png" alt="Fares">
-        </div>
-        <p id="hero-name">I'm Fares</p>
-        <h1 id="hero-title">Video Editor</h1>
-        <p id="hero-tagline">Turning raw footage into stories that move people.</p>
-        <div id="hero-stats">
-            <div class="stat">
-                <span class="stat-number">2+</span>
-                <span class="stat-label">Years of Experience</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">20+</span>
-                <span class="stat-label">Happy Clients</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">50+</span>
-                <span class="stat-label">Projects Completed</span>
-            </div>
-        </div>
-    </section>
+// Typing effect
+const tagline = document.getElementById('hero-tagline');
+const text = "Turning raw footage into stories that move people.";
+tagline.textContent = '';
+let i = 0;
+function type() { if (i < text.length) { tagline.textContent += text[i]; i++; setTimeout(type, 50); } }
+setTimeout(type, 1500);
 
-    <section id="features">
-        <p id="features-sub">Why work with me?</p>
-        <h2 id="features-title">What Makes Me Different</h2>
-        <div id="features-grid">
-            <div class="feature-card">
-                <div class="feature-left">
-                    <span class="feature-icon">⚡</span>
-                    <span class="feature-name">Fast Delivery</span>
-                </div>
-                <p class="feature-desc">I commit to deadlines and can deliver even faster — no excuses. If anything comes up, I'll tell you before starting the project.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-left">
-                    <span class="feature-icon">🎬</span>
-                    <span class="feature-name">Edit Quality</span>
-                </div>
-                <p class="feature-desc">I deliver the best editing and highest video quality to make sure your content stands out and grabs attention.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-left">
-                    <span class="feature-icon">💰</span>
-                    <span class="feature-name">Fair Pricing</span>
-                </div>
-                <p class="feature-desc">Price depends on the type of video — but I guarantee it'll be the best deal you'll hear for the quality you're getting.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-left">
-                    <span class="feature-icon">🤝</span>
-                    <span class="feature-name">Professionalism</span>
-                </div>
-                <p class="feature-desc">I earn your trust by treating every client with full respect and appreciation — professionalism goes both ways.</p>
-            </div>
-        </div>
-    </section>
+// Navbar scroll
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p class="about-desc">Video editor with over a year of experience in creating and editing visual content. I transform raw footage into compelling, professional videos tailored for every platform.</p>
-        <p class="about-desc">My work covers sound design, cutting, color grading, visual effects, storytelling, and animation — always pushing to deliver the best result.</p>
-        <h3 id="skills-title">My Skills</h3>
-        <div id="skills-grid">
-            <div class="skill-card">
-                <div class="skill-box">
-                    <span class="skill-emoji">✂️</span>
-                    <div class="skill-bar-wrap"><div class="skill-bar" style="--pct: 90%"></div></div>
-                    <span class="skill-pct">90%</span>
-                </div>
-                <p class="skill-name">Cutting & Editing</p>
-            </div>
-            <div class="skill-card">
-                <div class="skill-box">
-                    <span class="skill-emoji">✨</span>
-                    <div class="skill-bar-wrap"><div class="skill-bar" style="--pct: 85%"></div></div>
-                    <span class="skill-pct">85%</span>
-                </div>
-                <p class="skill-name">Visual Effects</p>
-            </div>
-            <div class="skill-card">
-                <div class="skill-box">
-                    <span class="skill-emoji">🎵</span>
-                    <div class="skill-bar-wrap"><div class="skill-bar" style="--pct: 70%"></div></div>
-                    <span class="skill-pct">70%</span>
-                </div>
-                <p class="skill-name">Sound Design</p>
-            </div>
-            <div class="skill-card">
-                <div class="skill-box">
-                    <span class="skill-emoji">🎭</span>
-                    <div class="skill-bar-wrap"><div class="skill-bar" style="--pct: 60%"></div></div>
-                    <span class="skill-pct">60%</span>
-                </div>
-                <p class="skill-name">Storytelling</p>
-            </div>
-            <div class="skill-card">
-                <div class="skill-box">
-                    <span class="skill-emoji">🎨</span>
-                    <div class="skill-bar-wrap"><div class="skill-bar" style="--pct: 50%"></div></div>
-                    <span class="skill-pct">50%</span>
-                </div>
-                <p class="skill-name">Color Grading</p>
-            </div>
-        </div>
-    </section>
+// Scroll appear animation
+const animateEls = document.querySelectorAll('.feature-card, .skill-card, .stat, #quran-verse p, .work-card');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), idx * 100);
+        }
+    });
+}, { threshold: 0.1 });
+animateEls.forEach(el => { el.classList.add('hidden'); observer.observe(el); });
 
-    <section id="work">
-        <p id="work-sub">Selected Projects</p>
-        <h2 id="work-title">My Work</h2>
-        <div id="work-grid">
-
-            <div class="work-card">
-                <a href="https://youtu.be/5ZaGhB8DoAw" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/5ZaGhB8DoAw/maxresdefault.jpg" alt="Project 1">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 1</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/Q5Yj5eHeykU" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/Q5Yj5eHeykU/maxresdefault.jpg" alt="Project 2">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 2</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/MnPMU5cNgQQ" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/MnPMU5cNgQQ/maxresdefault.jpg" alt="Project 3">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 3</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/L8E3yrdv-rU" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/L8E3yrdv-rU/maxresdefault.jpg" alt="Project 4">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 4</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/DZFaISPBtvY" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/DZFaISPBtvY/maxresdefault.jpg" alt="Project 5">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 5</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/yTMo8KodNUU" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/yTMo8KodNUU/maxresdefault.jpg" alt="Project 6">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 6</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/_x-GFSpVOvI" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/_x-GFSpVOvI/maxresdefault.jpg" alt="Project 7">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 7</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/rUkLyGsaeno" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/rUkLyGsaeno/maxresdefault.jpg" alt="Project 8">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 8</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/g0zQ5QfJDJs" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/g0zQ5QfJDJs/maxresdefault.jpg" alt="Project 9">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 9</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/YcfMzhU9jsc" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/YcfMzhU9jsc/maxresdefault.jpg" alt="Project 10">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 10</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/1pwsU337vW0" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/1pwsU337vW0/maxresdefault.jpg" alt="Project 11">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 11</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/XkdixfaoXFU" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/XkdixfaoXFU/maxresdefault.jpg" alt="Project 12">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 12</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/X956FLWrL_I" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/X956FLWrL_I/maxresdefault.jpg" alt="Project 13">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 13</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-            <div class="work-card">
-                <a href="https://youtu.be/xr0oOt30iD8" target="_blank">
-                    <div class="work-thumb">
-                        <img src="https://img.youtube.com/vi/xr0oOt30iD8/maxresdefault.jpg" alt="Project 14">
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                <div class="work-info">
-                    <h3 class="work-name">Project 14</h3>
-                    <p class="work-desc">Short description here</p>
-                    <div class="work-tags"><span>Reels</span><span>Editing</span></div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Let's Work Together</h2>
-        <p>Have a project in mind? I'd love to hear about it.</p>
-        <div id="contact-links">
-            <a href="mailto:fareseprahim2028@gmail.com">Email</a>
-            <a href="https://wa.me/201225884711" target="_blank">WhatsApp</a>
-            <a href="https://www.instagram.com/far_es7576" target="_blank">Instagram</a>
-            <a href="https://www.linkedin.com/in/fares-iprahim-4b6560411" target="_blank">LinkedIn</a>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 Fares. All rights reserved.</p>
-    </footer>
-
-    <div id="floating-char">
-        <div id="char-bubble">Let's create! ✨</div>
-        <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
-            <circle cx="60" cy="30" r="18" fill="url(#headGrad)"/>
-            <ellipse cx="60" cy="16" rx="18" ry="8" fill="#3c0078"/>
-            <circle cx="53" cy="28" r="2.5" fill="white"/>
-            <circle cx="67" cy="28" r="2.5" fill="white"/>
-            <circle cx="54" cy="29" r="1.2" fill="#1a0040"/>
-            <circle cx="68" cy="29" r="1.2" fill="#1a0040"/>
-            <path d="M54 35 Q60 40 66 35" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-            <rect x="38" y="52" width="44" height="42" rx="10" fill="url(#bodyGrad)"/>
-            <rect x="28" y="88" width="64" height="36" rx="6" fill="#1a0040" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
-            <rect x="32" y="92" width="56" height="26" rx="4" fill="#0d0020"/>
-            <rect x="34" y="94" width="52" height="22" rx="3" fill="url(#screenGrad)" opacity="0.8"/>
-            <rect x="37" y="98" width="20" height="2" rx="1" fill="#a78bfa" opacity="0.9"/>
-            <rect x="37" y="103" width="30" height="2" rx="1" fill="#7c3aed" opacity="0.7"/>
-            <rect x="37" y="108" width="15" height="2" rx="1" fill="#a78bfa" opacity="0.6"/>
-            <rect x="37" y="113" width="25" height="2" rx="1" fill="#7c3aed" opacity="0.5"/>
-            <path d="M38 65 Q20 75 30 90" stroke="url(#headGrad)" stroke-width="10" stroke-linecap="round" fill="none"/>
-            <path d="M82 65 Q100 75 90 90" stroke="url(#headGrad)" stroke-width="10" stroke-linecap="round" fill="none"/>
-            <defs>
-                <linearGradient id="headGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#c4b5fd"/>
-                    <stop offset="100%" stop-color="#7c3aed"/>
-                </linearGradient>
-                <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#3c0078"/>
-                    <stop offset="100%" stop-color="#1a0040"/>
-                </linearGradient>
-                <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#2d0060"/>
-                    <stop offset="100%" stop-color="#0d0020"/>
-                </linearGradient>
-            </defs>
-        </svg>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+// Skill bars
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const bar = entry.target;
+            const pct = bar.style.getPropertyValue('--pct');
+            bar.style.width = '0%';
+            bar.style.transition = 'width 1.2s ease';
+            setTimeout(() => { bar.style.width = pct; }, 200);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('.skill-bar').forEach(bar => skillObserver.observe(bar));
