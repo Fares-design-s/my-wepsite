@@ -307,8 +307,9 @@ footer { text-align: center; padding: 40px; color: #333; font-size: 13px; letter
 #modal-content {
     position: relative;
     width: 90%;
-    max-width: 500px;
-    padding-top: 88.88%;
+    max-width: 380px;
+    aspect-ratio: 9/16;
+    padding-top: 0;
 }
 #modal-iframe {
     position: absolute;
