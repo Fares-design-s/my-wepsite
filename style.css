@@ -289,4 +289,40 @@ footer { text-align: center; padding: 40px; color: #333; font-size: 13px; letter
     #floating-char { bottom: 12px; right: 12px; }
     #floating-char svg { width: 80px; height: 95px; }
     #char-bubble { font-size: 10px; padding: 4px 10px; }
+
+    /* VIDEO MODAL */
+#video-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+#video-modal.active { display: flex; }
+#modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    padding-top: 88.88%;
+}
+#modal-iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 12px;
+    border: none;
+}
+#close-btn {
+    position: absolute;
+    top: -40px; right: 0;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+}
 }
