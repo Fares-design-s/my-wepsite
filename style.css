@@ -386,11 +386,11 @@ footer { text-align: center; padding: 40px; color: #333; font-size: 13px; letter
 }
 
 .orbit-img {
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 22px;
     object-fit: contain;
-    border-radius: 8px;
-    filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.8));
+    border-radius: 4px;
+    filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.8));
     animation: counter-rotate 8s linear infinite;
 }
 
