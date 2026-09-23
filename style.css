@@ -46,7 +46,7 @@ h2 { font-size: 32px; margin-bottom: 24px; letter-spacing: 4px; text-transform: 
     text-align: center; gap: 16px;
 }
 #profile-wrap {
-    position: relative; width: 220px; height: 220px;
+    position: relative; width: 280px; height: 280px;
     display: flex; align-items: center; justify-content: center; margin-bottom: 8px;
 }
 #profile-wrap::before {
@@ -327,4 +327,60 @@ footer { text-align: center; padding: 40px; color: #333; font-size: 13px; letter
     font-size: 24px;
     cursor: pointer;
     z-index: 10;
+}
+
+/* ORBIT RING */
+.orbit-ring {
+    position: absolute;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    animation: orbit-rotate 8s linear infinite;
+    z-index: 3;
+}
+
+@keyframes orbit-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.orbit-dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 100%; height: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.orbit-item {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.orbit-item:nth-child(2) { transform: translateX(-50%) rotate(120deg) translateY(-130px) rotate(-120deg); top: auto; left: auto; }
+.orbit-item:nth-child(3) { transform: translateX(-50%) rotate(240deg) translateY(-130px) rotate(-240deg); top: auto; left: auto; }
+
+.orbit-circle {
+    width: 10px; height: 10px;
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(124, 58, 237, 0.8);
+}
+
+.orbit-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #a78bfa;
+    white-space: nowrap;
+    text-transform: uppercase;
+    background: rgba(10, 10, 30, 0.8);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(124, 58, 237, 0.3);
 }
