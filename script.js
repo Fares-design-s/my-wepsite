@@ -267,13 +267,11 @@ function openVideo(id) {
   const iframe = document.getElementById('modal-iframe');
   iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
   modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
 }
 
 function closeVideo() {
   document.getElementById('video-modal').classList.remove('active');
   document.getElementById('modal-iframe').src = '';
-  document.body.style.overflow = '';
 }
 
 document.addEventListener('keydown', (e) => {
